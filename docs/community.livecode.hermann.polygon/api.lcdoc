@@ -1,0 +1,554 @@
+Library: community.livecode.hermann.polygon
+
+Type: widget
+
+Description:
+Polygon v121 [-hh fecit, Oct 2016/Oct 2018]
+
+Widget 'hhPolygon' displays a N-sided polygon that may be filled with built-in patterns.
+++ DoubleClick starts/stops edit mode of vertices (moves them).
+++ RightClick a vertex to have a menu for deleting it or insert one further vertex.
+++ RightClicking and dragging _inside_ the (opaque parts of the) polygon moves the shape.
+
+The widget passes the following messages to LC Script (you can use them in your widget's script):
+mouseEnter, mouseLeave, mouseUp.
+
+Name: verticesColor
+
+Type: property
+
+Syntax: set the verticesColor of <widget> to <pColor>
+get the verticesColor of <widget>
+
+Summary: Sets or gets the color of the oval "handles"/"markers" at the vertices in editMode.
+
+Parameters: 
+
+pColor: The color of the vertices (markers) , in RGB or RGBA format
+
+Example:
+set the verticesColor of widget "hhPolygon" to "255,127,0"
+-- returns a _four-item_ string
+get the verticesColor of widget "hhPolygon" -- "255,127,0,255"
+set the verticesColor of widget "hhPolygon" to "255,127,0,127"
+
+Description:
+Use the verticesColor property to set the color of the oval "handles"/"markers" at the vertices in editMode.
+The color is in the form of a 3 or 4 item string, the 4th optional item being the alpha value, all integers between 0 and 255.
+[You may also use numbers containing a decimal point between 0.0 and 1.0, for example "0.2,0.1,0.2".
+.: The "get" always returns _four_ items in the integer form (each in range 0-255). :.
+
+
+
+Name: strokePoly
+
+Type: property
+
+Syntax: set the strokePoly of <widget> to <pTrueOrFalse>
+get the strokePoly of <widget>
+
+Parameters: 
+
+pTrueOrFalse: is true or false
+
+Example:
+set the strokePoly of widget "hhPolygon" to not \
+		the strokePoly of widget "hhPolygon"
+
+Summary: If set to true property strokePoly causes the polygon path to be stroked (outlined) with the current strokeColor.
+
+Description: Use the strokePoly property to stroke (outline) the polygon's path. Setting the strokePoly of the widget (for the polygon path) to false sets the fillPoly of the widget (for the polygon path) to true.
+
+
+
+
+Name: scalePatternStroke
+
+Type: property
+
+Syntax: set the scalePatternStroke of <widget> to <pTrueOrFalse>
+get the scalePatternStroke of <widget>
+
+Parameters: 
+
+pTrueOrFalse: is true or false
+
+Example:
+set the scalePatternStroke of widget "hhPolygon" to not \
+		the scalePatternStroke of widget "hhPolygon"
+
+Summary: If set to true property scalePatternStroke causes the the current stroke-pattern image to be scaled to fit.
+
+Description: Use the scalePatternStroke property to determine the dimensions of the stroke-pattern. If true then the stroke-pattern paint is scaled to fit. Else the unscaled stroke-pattern is repeated (if small enough).
+
+
+
+
+Name: builtInImgStroke
+
+Type: property
+
+Syntax: set the builtInImgStroke of <widget> to <pString>
+
+Parameters: 
+
+pString: is the name of a 'widget-built-in' image to use for the stroke-pattern.
+
+Example: set the builtInImgStroke of widget "hhPolygon" to "water.jpg"
+
+Summary: Chooses one of the widget-built-in images as the available stroke-pattern
+
+Description:
+Sets the name of the image to use as a stroke-pattern to one of the widget-built-in images. This is typically set from the popup menu in the property inspector.
+Available choices are currently buchenberg.jpg, burg.jpg, water.jpg, gs01.png, gs02.png, gs03.png, gs04.png, gs05.png, gs06.png, gs07.png, gs08.png, gs09.png, gs10.png, gs11.png, gs12.png, patt01.jpg and patt02.jpg.
+
+
+
+Name: whitePositionColor
+
+Type: property
+
+Syntax: set the whitePositionColor of <widget> to <pTrueOrFalse>
+get the whitePositionColor of <widget>
+
+Parameters: 
+
+pTrueOrFalse: is true or false
+
+Example:
+set the whitePositionColor of widget "hhPolygon" to not \
+		the whitePositionColor of widget "hhPolygon"
+
+Summary: whitePositionColor sets the color of an activated showMouseDownPosition to white (or black).
+
+Description: If set to true property whitePositionColor shows while showMouseDownPosition is active the coordinates in white color, else in black color.
+
+
+
+
+Name: strokeWidth
+
+Type: property
+
+Syntax: set the strokeWidth of <widget> to <pWidth>
+get the strokeWidth of <widget>
+
+Parameters: 
+
+pWidth: A positive number
+
+Example: set the strokeWidth of widget "hhPolygon" to 4.2
+
+Summary:
+Set or get the strokeWidth property for stroking (outlining) the polygon's path.
+The bounds of the path are accordingly adjusted.
+
+Description:
+Use the strokeWidth property to determine the with of a stroked path. It's not poss
+to set the strokeWidth to a value smaller than 1. Set the strokePoly property to false to disable to have no stroke/outline.
+
+
+
+Name: usePatternStroke
+
+Type: property
+
+Syntax: set the usePatternStroke of <widget> to <pTrueOrFalse>
+get the usePatternStroke of <widget>
+
+Parameters: 
+
+pTrueOrFalse: is true or false
+
+Example:
+set the usePatternStroke of widget "hhPolygon" to not \
+		the usePatternStroke of widget "hhPolygon"
+
+Summary: If set to true property usePatternStroke causes the polygon's Stroke (outline) to be filled with the current pattern image.
+
+Description: Use the usePatternStroke property to determine the stroke (outline) of the polygon's path. If true then the stroke-pattern paint is used for stroking, else the strokeColor.
+
+
+
+
+Name: strokeColor
+
+Type: property
+
+Syntax: set the strokeColor of <widget> to <pColor>
+get the strokeColor of <widget>
+
+Summary: Sets or gets the color of the path outline (stroke).
+
+Parameters: 
+
+pColor: The stroke (outline) color of the text, in RGB or RGBA format
+
+Example:
+set the strokeColor of widget "hhPolygon" to "255,127,0"
+-- returns a _four-item_ string
+get the strokeColor of widget "hhPolygon" -- "255,127,0,255"
+set the strokeColor of widget "hhPolygon" to "255,127,0,127"
+
+Description:
+Use the strokeColor property to set the color of the path outline.
+The color is in the form of a 3 or 4 item string, the 4th optional item being the alpha value, all integers between 0 and 255.
+[You may also use numbers containing a decimal point between 0.0 and 1.0, for example "0.2,0.1,0.2".
+.: The "get" always returns _four_ items in the integer form (each in range 0-255). :.
+
+
+
+Name: regularStarPolygon
+
+Type: property
+
+Syntax: set the regularStarPolygon of <widget> to <pString>
+get the regularStarPolygon of <widget>
+
+Parameters: 
+
+pString: is a string of the form "N_M". N is the number of vertices, M the step when setting the order of the vertices of the regular polygon (this combination is called a Schlaefli symbol).
+
+Examples:
+set the regularStarPolygon of widget "hhPolygon" to "8_3"
+get the regularStarPolygon of widget "hhPolygon"
+
+Summary: The regularStarPolygon sets the Schlaefli symbol "N_M" of the regular star polygon.
+
+Description:
+The regularStarPolygon is a string of the form "N_M". N is the number of vertices, M the step when setting the order of the vertices of the regular polygon; this combination is called a Schlaefli symbol. It is M < N/2 and N and M have no common divisor.
+(See https://en.wikipedia.org/wiki/List_of_regular_polytopes_and_compounds#Stars)
+
+
+
+Name: showMouseDownPosition
+
+Type: property
+
+Syntax: set the showMouseDownPosition of <widget> to <pTrueOrFalse>
+get the showMouseDownPosition of <widget>
+
+Parameters: 
+
+pTrueOrFalse: is true or false
+
+Example:
+set the showMouseDownPosition of widget "hhPolygon" to not \
+		the showMouseDownPosition of widget "hhPolygon"
+
+Summary: If set to true property showMouseDownPosition shows (x,y) coordinates of the mouse position
+
+Description: If set to true property showMouseDownPosition shows (x,y) coordinates of the mouse position that are local to the widget's bounds and also the 'usual' card coordinates. Use property	 whitePositionColor to improve visibilty if necessary.
+
+
+
+
+Name: editMode
+
+Type: property
+
+Syntax: set the editMode of <widget> to <pTrueOrFalse>
+get the editMode of <widget>
+
+Parameters: 
+
+pTrueOrFalse: is true or false
+
+Example:
+set the editMode of widget "hhPolygon" to not \
+		the editMode of widget "hhPolygon"
+
+Summary: If set to true property editMode shows "handles"/"markers" at the vertices that you can grab and move.
+
+Description: If set to true property editMode shows "handles"/"markers" at the vertices that you can grab and move. The mode may also be started by double-clicking the widget at the polygons 'interior' (opaque parts).
+
+
+
+
+Name: scalePatternFill
+
+Type: property
+
+Syntax: set the scalePatternFill of <widget> to <pTrueOrFalse>
+get the scalePatternFill of <widget>
+
+Parameters: 
+
+pTrueOrFalse: is true or false
+
+Example:
+set the scalePatternFill of widget "hhPolygon" to not \
+		the scalePatternFill of widget "hhPolygon"
+
+Summary: If set to true property scalePatternFill causes the the current fill-pattern image to be scaled to fit.
+
+Description: Use the scalePatternFill property to determine the dimensions of the fill-pattern. If true then the fill-pattern paint is scaled to fit. Else the unscaled fill-pattern is repeated (if small enough).
+
+
+
+
+Name: filenameStroke
+
+Type: property
+
+Syntax: set the filenameStroke of <widget> to <pPath>
+
+Parameters: 
+
+pPath: is a full valid filePath to an image to use for the stroke-pattern.
+
+Example: set the filenameStroke of widget "hhPolygon" to "/Users/admin/pictures/water.jpg"
+
+Summary: Sets any LC-readable image by its filePath as the available stroke-pattern.
+
+Description: Sets the filePath of the image to use as the stroke-pattern. This is typically set from the popup menu in the property inspector (and it's 'answer file'-dialog button right of the filename's text box). 
+
+
+
+
+Name: radius
+
+Type: property
+
+Syntax: set the radius of <widget> to <pNum>
+get the radius of <widget>
+
+Parameters: 
+
+pNum: is a positive number
+
+Examples:
+set the radius of widget "hhPolygon" to 100 -- 100 pixels
+get the radius of widget "hhPolygon"
+
+Summary: The radius sets the radius of the circle that contains the vertices of the regular polygon.
+
+Description: Use the radius property to determine the width and height the regular N-gon. Choosing a new value for the radius changes the width and height of the widget to 2*radius also if it isn't a regular polygon any more.
+
+
+
+
+Name: builtInImgFill
+
+Type: property
+
+Syntax: set the builtInImgFill of <widget> to <pString>
+
+Parameters: 
+
+pString: is the name of a 'widget-built-in' image to use for the fill-pattern.
+
+Example: set the builtInImgFill of widget "hhPolygon" to "water.jpg"
+
+Summary: Chooses one of the widget-built-in images as the available fill-pattern
+
+Description:
+Sets the name of the image to use as a fill-pattern to one of the widget-built-in images. This is typically set from the popup menu in the property inspector.
+Available choices are currently buchenberg.jpg, burg.jpg, water.jpg, gs01.png, gs02.png, gs03.png, gs04.png, gs05.png, gs06.png, gs07.png, gs08.png, gs09.png, gs10.png, gs11.png, gs12.png, patt01.jpg and patt02.jpg.
+
+
+
+Name: useStarPolygon
+
+Type: property
+
+Syntax: set the useStarPolygon of <widget> to <pTrueOrFalse>
+get the useStarPolygon of <widget>
+
+Parameters: 
+
+pTrueOrFalse: is true or false
+
+Example:
+set the useStarPolygon of widget "hhPolygon" to not \
+		the useStarPolygon of widget "hhPolygon"
+
+Summary: useStarPolygon activates a star polygon (with current Schlaefli symbol) to be drawn.
+
+Description: Use the useStarPolygon property to determine that a star polygon (with current Schlaefli symbol) is used. If set to false a 'usual' regular polygon is drawn.
+
+
+
+
+Name: filenameFill
+
+Type: property
+
+Syntax: set the filenameFill of <widget> to <pPath>
+
+Parameters: 
+
+pPath: is a full valid filePath to an image to use for the fill-pattern.
+
+Example: set the filenameFill of widget "hhPolygon" to "/Users/admin/pictures/water.jpg"
+
+Summary: Sets any LC-readable image by its filePath as the available fill-pattern.
+
+Description: Sets the filePath of the image to use as the fill-pattern. This is typically set from the popup menu in the property inspector (and it's 'answer file'-dialog button right of the filename's text box). 
+
+
+
+
+Name: numOfVertices
+
+Type: property
+
+Syntax: set the numOfVertices of <widget> to <pNum>
+get the numOfVertices of <widget>
+
+Parameters: 
+
+pNum: is an Integer (at least 3).
+
+Examples:
+set the numOfVertices of widget "hhPolygon" to 12 -- regular 12-gon
+get the numOfVertices of widget "hhPolygon"
+
+Summary: The numOfVertices sets the number of vertices of the (regular) polygon.
+
+Description: Use the numOfVertices property to determine the number N of the regular N-gon. Choosing a new number of vertices RESETS the current vertices of widget!
+
+
+
+
+Name: fillColor
+
+Type: property
+
+Syntax: set the fillColor of <widget> to <pColor>
+get the fillColor of <widget>
+
+Summary: Sets or gets the color of the chars fill.
+
+Parameters: 
+
+pColor: The color of the text, in RGB or RGBA format
+
+Example:
+set the fillColor of widget "hhPolygon" to "255,127,0"
+-- returns a _four-item_ string
+get the fillColor of widget "hhPolygon" -- "255,127,0,255"
+set the fillColor of widget "hhPolygon" to "255,127,0,127"
+
+Description:
+Use the fillColor property to set the color of the chars fill.
+The color is in the form of a 3 or 4 item string, the 4th optional item being the alpha value, all integers between 0 and 255.
+[You may also use numbers containing a decimal point between 0.0 and 1.0, for example "0.2,0.1,0.2".
+.: The "get" always returns _four_ items in the integer form (each in range 0-255). :.
+
+
+
+Name: polyPoints
+
+Type: property
+
+Syntax: set the polyPoints of <widget> to <pLinesOfPoints>
+get the polyPoints of <widget>
+
+Parameters: 
+
+pLinesOfPoints: is a string of points, one point per line, NO empty lines (as the polygon is not 'interrupted').
+
+Examples:
+set the polyPoints of widget "hhPolygon" to the points of graphic 1
+get the polyPoints of widget "hhPolygon"
+
+Summary: The polyPoints is intended to be a 'connector' to polygon graphic objects in LC Script.
+
+Description: The polyPoints is a string of at least two lines containing a point "x,y" in each line. Empty lines are not allowed. You may use this property also for exact positioning in the property inspector.
+
+
+
+
+Name: showBounds
+
+Type: property
+
+Syntax: set the showBounds of <widget> to <pTrueOrFalse>
+get the showBounds of <widget>
+
+Parameters: 
+
+pTrueOrFalse: is true or false
+
+Example:
+set the showBounds of widget "hhPolygon" to not \
+		the showBounds of widget "hhPolygon"
+
+Summary: Whether to show the bounds of the widget.
+
+Description: If set to true property showBounds shows as dashed line the bounds of the widget. These has always  to be adjusted, so that the widget is the smallest enclosing rectangleof the polygon.
+
+
+
+
+Name: usePatternFill
+
+Type: property
+
+Syntax: set the usePatternFill of <widget> to <pTrueOrFalse>
+get the usePatternFill of <widget>
+
+Parameters: 
+
+pTrueOrFalse: is true or false
+
+Example:
+set the usePatternFill of widget "hhPolygon" to not \
+		the usePatternFill of widget "hhPolygon"
+
+Summary: If set to true property usePatternFill causes the polygon's path to be filled with the current fill-pattern image.
+
+Description: Use the usePatternFill property to determine the fill of the polygon's path. If true then the fill-pattern paint is used, else the fillColor.
+
+
+
+
+Name: rotateBy
+
+Type: property
+
+Syntax: set the rotateBy of <widget> to <pAngle>
+get the rotateBy of <widget>
+
+Parameters: 
+
+pAngle: angle in degrees, negative values rotate counter-clockwise, positive values clockwise in degrees.
+
+Examples:
+-- rotate 30 degress cw from current rotation
+set the rotateBy of widget "hhPolygon" to	 30
+-- rotate 15 degress ccw from current rotation
+set the rotateBy of widget "hhPolygon" to -15
+
+Summary: The angle of additive or subtractive rotation of the polygon path (NOT of the pattern). RotateBy is NOT a 'rotateTo'.
+
+Description:
+Use the rotateBy property to rotate the polygon <pAngle> degrees clockwise (cw) on base of the current state.
+You may also give negative angles which rotate their absolute value counterclockwise (ccw)
+For example -15 cw is equivalent to 360-15 cw is equivalent to 15 ccw.
+
+
+
+Name: fillPoly
+
+Type: property
+
+Syntax: set the fillPoly of <widget> to <pTrueOrFalse>
+get the fillPoly of <widget>
+
+Parameters: 
+
+pTrueOrFalse: is true or false
+
+Example:
+set the fillPoly of widget "hhPolygon" to not \
+		the fillPoly of widget "hhPolygon"
+
+Summary: If set to true property fillPoly causes the polygon path to be filled with the current fillColor.
+
+Description: Use the fillPoly property to fill the polygon's path. Setting the fillPoly of the widget (for the polygon path) to false sets the strokePoly of the widget (for the polygon path) to true.
+
+
+
+

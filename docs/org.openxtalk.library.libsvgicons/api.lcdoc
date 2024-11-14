@@ -1,0 +1,123 @@
+Library: org.openxtalk.library.libsvgicons
+
+Type: library
+
+Summary: This is the OpenXtalk SVG icon path library.
+
+version: 0.1.0
+
+author: OpenXTalk
+
+
+Name: horizontalFlippedOfSVGPath
+
+Type: handler
+
+Syntax: horizontalFlippedOfSVGPath( pInSVGPath )
+
+Summary: 
+
+Parameters: 
+
+pInSVGPath: An SVG path string
+
+Returns: 
+
+pOutSVGPath: A modified SVG path string
+
+Example: put horizontalFlippedOfSVGPath(pInSVGPath) into tOutSVGPath
+
+Description:
+horizontalFlippedOfSVGPath function takes an input SVG Path and returns a new
+SVG path string that has been flipped horizontally.
+
+
+
+Name: vertScaledOfSVGPath
+
+Type: handler
+
+Syntax: vertScaledOfSVGPath( pSVGPath )
+
+Summary: 
+
+Parameters: 
+
+pScale: Percentage of original to scale
+
+pSVGPath: An SVG path string
+
+Example: put vertScaledOfSVGPath( 1.5, pInSVGPath) into tOutSVGPath -- tOutSVGPath is 150% of the height of pInSVGPath
+
+Description: Use vertScaledOfSVGPath function to get a path that is scaled height-wise.
+
+
+
+
+Name: horizScaledOfSVGPath
+
+Type: handler
+
+Syntax: horizSquishFlippedOfSVGPath( pSVGPath )
+
+Summary: 
+
+Parameters: 
+
+pScale: Percentage of original to scale
+
+pSVGPath: An SVG path string
+
+Example: put horizScaledOfSVGPath( 1.5, pInSVGPath) into tOutSVGPath -- tOutSVGPath is 150% of the width of pInSVGPath
+
+Description: Use horizScaledOfSVGPath function to get a path that is scaled width-wise.
+
+
+
+
+Name: loadIconSetFromTSVFile
+
+Type: handler
+
+Syntax: loadIconSetFromTSVFile pFilePathToTSVfile
+
+Summary: 
+
+Parameters: 
+
+pFilePathToTSVfile: A file path to an SVG glyphs collection in Tab Seperated Values format.
+
+Example: put horizontalFlippedOfSVGPath(pInSVGPath) into tOutSVGPath
+
+Description:
+Use loadIconSetFromTSVFile command to load an SVG glyphs collection in
+Tab Seperated Values format. The will then be parsed and loaded into memory into
+the font family array compatible with the IconSVG library.
+LibSVGIcons comes with glyph several sets ready to be used.
+
+
+
+Name: verticalFlippedOfSVGPath
+
+Type: handler
+
+Syntax: verticalFlippedOfSVGPath( pInSVGPath )
+
+Summary: 
+
+Parameters: 
+
+pInSVGPath: An SVG path string
+
+Returns: 
+
+pOutSVGPath: A modified SVG path string
+
+Example: put verticalFlippedOfSVGPath(pInSVGPath) into tOutSVGPath
+
+Description:
+verticalFlippedOfSVGPath function takes an input SVG Path and returns a new
+SVG path string that has been flipped vertically.
+
+
+

@@ -1,0 +1,515 @@
+Library: community.livecode.hermann.progress
+
+Type: widget
+
+Description:
+progress v1.3.0 [-hh fecit, Nov 2017/Oct 2018]
+
+Widget 'hhProgress' displays progress, in elliptical or rectangular mode.
+++ Resize with pointer tool and shiftKey down to get a proportional resizing.
+++ Resize with pointer tool and optionKey down to get a shape of equal width and height.
+++ Drag with pointer tool and optionKey down to 'duplicate' the widget (may be the copy loses some properties).
+++ The rectangle progress moves left-right or bottom-up, depending on the chosen width and height.
+++ Drag the widget by mouseDown (if property allowGrab is true)
+++ RightClick the widget for a menu of basic options (if property allowContextMenu is true)
+
+The widget passes the following mouse messages for your own use in the widget's script:
+mouseDown (late), mouseEnter, mouseLeave, mouseRelease, mouseUp.
+
+Name: textDrawsDifferent
+
+Type: property
+
+Syntax: set the textDrawsDifferent of <widget> to <pTrueOrFalse>
+get the textDrawsDifferent of <widget>
+
+Parameters: 
+
+pTrueOrFalse: is true or false
+
+Example:
+set the textDrawsDifferent of widget "hhProgress" to not \
+    the textDrawsDifferent of widget "hhProgress"
+
+Summary: Whether the progress text draws with blend mode "difference"
+
+Description: Use the textDrawsDifferent property to draw with inverting the text color by the progress (blend mode different). Whether the text is shown determines property "showProgressText".
+
+
+
+
+Name: fillFace
+
+Type: property
+
+Syntax: set the fillFace of <widget> to <pTrueOrFalse>
+get the fillFace of <widget>
+
+Parameters: 
+
+pTrueOrFalse: is true or false
+
+Example:
+set the fillFace of widget "hhProgress" to not \
+    the fillFace of widget "hhProgress"
+
+Summary: If set to true property fillFace causes the "face" of the progress ellipse or the background of the progress rectangle filled with the current faceColor.
+
+Description: Use the fillFace property to fill the face (ellipse or rectangle) or not.
+
+
+
+
+Name: ellipseInnerPercent
+
+Type: property
+
+Syntax: set the ellipseInnerPercent of <widget> to <pPerc>
+get the ellipseInnerPercent of <widget>
+
+Parameters: 
+
+pPerc: A positive number in Range 0-100
+
+Example: set the ellipseInnerPercent of widget "hhProgress" to 42
+
+Summary: Set or get the ellipseInnerPercent
+
+Description: Use the strokeWidthRect property to get or set the area percentage of the inner part. Property ellipseShowInner setsthe visibility of that part.
+
+
+
+
+Name: strokeWidthCirc
+
+Type: property
+
+Syntax: set the strokeWidthCirc of <widget> to <pWidth>
+get the strokeWidthCirc of <widget>
+
+Parameters: 
+
+pWidth: A non-negative number
+
+Example: set the strokeWidthCirc of widget "hhProgress" to 4.2
+
+Summary: Set or get the strokeWidthCirc property for stroking the "progress"/percentage sector of the ellipse.
+
+Description: Use the strokeWidthRect property to set the width for stroking (the 'outline' of) the "progress"/percentage sector  the sector) of the ellipse with the current strokeColor.
+
+
+
+
+Name: strokeColor
+
+Type: property
+
+Syntax: set the strokeColor of <widget> to <pColor>
+get the strokeColor of <widget>
+
+Summary: Sets or gets the color of the progress indicator's stroke (= current percentage stroke, the "progress" stroke).
+
+Parameters: 
+
+pColor: The stroke color of the progress/percentage, in RGB or RGBA format
+
+Example:
+set the strokeColor of widget "hhProgress" to "255,127,0"
+-- returns a _four-item_ string
+get the strokeColor of widget "hhProgress" -- "255,127,0,255"
+set the strokeColor of widget "hhProgress" to "255,127,0,127"
+
+Description:
+Use the strokeColor property to set the color of the progress indicator's stroke (= current percentage stroke, the "progress" stroke).
+The color is in the form of a 3 or 4 item string, the 4th optional item being the alpha value, all integers between 0 and 255.
+[You may also use numbers containing a decimal point between 0.0 and 1.0, for example "0.2,0.1,0.2".
+.: The "get" always returns _four_ items in the integer form (each in range 0-255). :.
+
+
+
+Name: allowGrab
+
+Type: property
+
+Syntax: set the allowGrab of <widget> to <pTrueOrFalse>
+get the allowGrab of <widget>
+
+Parameters: 
+
+pTrueOrFalse: is true or false
+
+Example:
+set the allowGrab of widget "hhProgress" to not \
+    the allowGrab of widget "hhProgress"
+
+Summary: Whether to allow the widget to grab on mouseDown.
+
+Description: Use the allowGrab to disable/enable the widget's "grab" (on mouseDown). You can still use YOUR mouseDown handler in the widget's script.
+
+
+
+
+Name: strokeEllipseProgress
+
+Type: property
+
+Syntax: set the strokeEllipseProgress of <widget> to <pTrueOrFalse>
+get the strokeEllipseProgress of <widget>
+
+Parameters: 
+
+pTrueOrFalse: is true or false
+
+Example:
+set the strokeEllipseProgress of widget "hhProgress" to not \
+    the strokeEllipseProgress of widget "hhProgress"
+
+Summary: If set to true property strokeEllipseProgress causes the two ellipsearcs to be stroked with the current strokeColor.
+
+Description: Use the fillFace property to fill the face (ellipse or rectangle) or not.
+
+
+
+
+Name: ellipseShowInner
+
+Type: property
+
+Syntax: set the ellipseShowInner of <widget> to <pTrueOrFalse>
+get the ellipseShowInner of <widget>
+
+Parameters: 
+
+pTrueOrFalse: is true or false
+
+Example:
+set the ellipseShowInner of widget "hhProgress" to not \
+    the ellipseShowInner of widget "hhProgress"
+
+Summary: Whether to show the 'complementary' inner part in ellipse mode.
+
+Description: If set to true property ellipseShowInner shows a complementary filled inner part. The area percentage of that inner part is set by property ellipseInnerPercent.
+
+
+
+
+Name: faceColor
+
+Type: property
+
+Syntax: set the faceColor of <widget> to <pColor>
+get the faceColor of <widget>
+
+Summary: Sets or gets the color of the "face" of the progress ellipse or the background of the progress rectangle. Property fillFace determines, whether the fill occurs.
+
+Parameters: 
+
+pColor: The color of the "face" or background fill, in RGB or RGBA format
+
+Example:
+set the faceColor of widget "hhProgress" to "255,127,0"
+-- returns a _four-item_ string
+get the faceColor of widget "hhProgress" -- "255,127,0,255"
+set the faceColor of widget "hhProgress" to "255,127,0,127"
+
+Description:
+Use the faceColor property to set the color of the "face" of the progress ellipse or the background of the progress rectangle.
+The color is in the form of a 3 or 4 item string, the 4th optional item being the alpha value, all integers between 0 and 255.
+[You may also use numbers containing a decimal point between 0.0 and 1.0, for example "0.2,0.1,0.2".
+.: The "get" always returns _four_ items in the integer form (each in range 0-255). :.
+
+
+
+Name: mode
+
+Type: property
+
+Syntax: set the mode of <widget> to <pMode>
+get the mode of <widget>
+
+Parameters: 
+
+pMode: A string, either "Ellipse" or "Rectangle".
+
+Example:
+set the mode of widget "hhProgress" to "Ellipse"
+get the mode of widget "hhProgress"
+
+Summary: Set property mode to switch between Ellipse and Rectangle.  Also choosable from a popup menu by rightClicking the widget.
+
+Description:
+Set property mode to switch between Ellipse and Rectangle.
+Resize the widget with shiftKeyDown and pointer tool to get a proportional resize, resize it with optionKey down to get a shape with equal width and height (= a ellipse or a square).
+Property _mode2_ is a synonym and for your comfort available in section "Colors".
+
+
+
+Name: insetRect
+
+Type: property
+
+Syntax: set the insetRect of <widget> to <pNum>
+get the insetRect of <widget>
+
+Parameters: 
+
+pNum: A positive number (of pixels)
+
+Example: set the insetRect of widget "hhProgress" to 4
+
+Summary: Use insetRect amount of pixels before start and after end of progress indicator's background rect.
+
+Description: Use the insetRect property to set the inset of progress indicator's background rect within the filled background rectangle. Useful for adjusting the widget's display to the chosen roundRectRadius.
+
+
+
+
+Name: fillColor
+
+Type: property
+
+Syntax: set the fillColor of <widget> to <pColor>
+get the fillColor of <widget>
+
+Summary: Sets or gets the color of the progress indicator's background fill (=100%).
+
+Parameters: 
+
+pColor: The color of the fill, in RGB or RGBA format
+
+Example:
+set the fillColor of widget "hhProgress" to "255,127,0"
+-- returns a _four-item_ string
+get the fillColor of widget "hhProgress" -- "255,127,0,255"
+set the fillColor of widget "hhProgress" to "255,127,0,127"
+
+Description:
+Use the fillColor property to set the color of the of the progress indicator's background fill (=100%).
+The color is in the form of a 3 or 4 item string, the 4th optional item being the alpha value, all integers between 0 and 255.
+[You may also use numbers containing a decimal point between 0.0 and 1.0, for example "0.2,0.1,0.2".
+.: The "get" always returns _four_ items in the integer form (each in range 0-255). :.
+
+
+
+Name: demoMode
+
+Type: property
+
+Syntax: set the demoMode of <widget> to <pMode>
+get the demoMode of <widget>
+
+Parameters: 
+
+pMode: One of the strings "FastDemo", "Seconds", "Minutes", "Hours12", "Hours24".
+
+Example:
+set the demoMode of widget "hhProgress" to "Seconds"
+get the demoMode of widget "hhProgress"
+
+Summary: Set property demoMode to display one of the 5 modes FastDemo, Seconds, Minutes, Hours12 or Hours24 as percentages.
+
+Description: Use the demoMode property to display timed preview when adjusting the options or as part of a time display. Needs property showDemo set to true for working.
+
+
+
+
+Name: showProgressText
+
+Type: property
+
+Syntax: set the showProgressText of <widget> to <pTrueOrFalse>
+get the showProgressText of <widget>
+
+Parameters: 
+
+pTrueOrFalse: is true or false
+
+Example:
+set the showProgressText of widget "hhProgress" to not \
+    the showProgressText of widget "hhProgress"
+
+Summary: Whether to show the percentage as text
+
+Description: Use the showProgressText property to display the progress centered as text (percentage). 
+
+
+
+
+Name: strokeWidthRect
+
+Type: property
+
+Syntax: set the strokeWidthRect of <widget> to <pWidth>
+get the strokeWidthRect of <widget>
+
+Parameters: 
+
+pWidth: A positive number
+
+Example: set the strokeWidthRect of widget "hhProgress" to 4.2
+
+Summary: Set or get the strokeWidthRect property for stroking the "progress"/percentage.
+
+Description: Use the strokeWidthRect property to set the width for stroking the "progress"/percentage in the "rectangle"-mode with the current strokeColor.
+
+
+
+
+Name: percentage
+
+Type: property
+
+Syntax: set the percentage of <widget> to <pPercents>
+get the percentage of <widget>
+
+Parameters: 
+
+pPercents: The percentage of the progress is any number in range 0-100.
+
+Example:
+set the percentage of widget "hhProgress" to 61.8
+get the percentage of widget "hhProgress" -- returns a number in range 0-100
+
+Summary: The progress of the progress indicator as a percentage (in range 0-100)
+
+Description: Use the percentage property to set the 'progress' of the progress indicator]
+
+
+
+
+Name: showDemo
+
+Type: property
+
+Syntax: set the showDemo of <widget> to <pTrueOrFalse>
+get the showDemo of <widget>
+
+Parameters: 
+
+pTrueOrFalse: is true or false
+
+Example:
+set the showDemo of widget "hhProgress" to not \
+    the showDemo of widget "hhProgress"
+
+Summary: If set to true property showDemo displays timed percentages accorting to th chosen demoMode.
+
+Description: Use the showDemo property for a preview when adjusting the options or as part of a time display. Choose also an appropriate demoMode.
+
+
+
+
+Name: progressTextColor
+
+Type: property
+
+Syntax: set the progressTextColor of <widget> to <pColor>
+get the progressTextColor of <widget>
+
+Summary: Sets or gets the color of the progress indicator's stroke (= current percentage stroke, the "progress" stroke).
+
+Parameters: 
+
+pColor: The text color of the progress/percentage text
+
+Example:
+set the progressTextColor of widget "hhProgress" to "255,127,0"
+-- returns a _four-item_ string
+get the progressTextColor of widget "hhProgress" -- "255,127,0,255"
+set the progressTextColor of widget "hhProgress" to "255,127,0,127"
+
+Description:
+Use the progressTextColor property to set the color of the progress indicator text (= current percentage).
+The color is in the form of a 3 or 4 item string, the 4th optional item being the alpha value, all integers between 0 and 255.
+[You may also use numbers containing a decimal point between 0.0 and 1.0, for example "0.2,0.1,0.2".
+.: The "get" always returns _four_ items in the integer form (each in range 0-255). :.
+
+
+
+Name: roundRectRadius
+
+Type: property
+
+Syntax: set the roundRectRadius of <widget> to <pNum>
+get the roundRectRadius of <widget>
+
+Parameters: 
+
+pNum: A non-negative number (of pixels)
+
+Example: set the roundRectRadius of widget "hhProgress" to 4
+
+Summary: Use roundRectRadius of 0-32 pixels for adjusting the rounded background rectangle (parameter 0 = not rounded).
+
+Description:
+Use the roundRectRadius property for adjusting the rounded background rectangle.
+The roundRectRadius can be set to zero (= no rounding of edges, the usual rectangle). The property insetRect may need changes after changing the roundRectRadius.
+
+
+
+Name: allowContextMenu
+
+Type: property
+
+Syntax: set the allowContextMenu of <widget> to <pTrueOrFalse>
+get the allowContextMenu of <widget>
+
+Parameters: 
+
+pTrueOrFalse: is true or false
+
+Example:
+set the allowContextMenu of widget "hhProgress" to not \
+    the allowContextMenu of widget "hhProgress"
+
+Summary: Whether to allow the ContextMenu (by rightClick).
+
+Description: Use the allowContextMenu to disable/enable the widget's contextMenu.
+
+
+
+
+Name: UTCHoursOffset
+
+Type: property
+
+Syntax: set the UTCHoursOffset of <widget> to <pOffset>
+get the UTCHoursOffset of <widget>
+
+Parameters: 
+
+pOffset: A number between -12.0 and 12.0, choosable in steps of 0.25 (hours).
+
+Example:
+set the UTCHoursOffset of widget "hhProgress" to 4.5
+get the UTCHoursOffset of widget "hhProgress"
+
+Summary: Set property UTCHoursOffset to shift the time display if demoMode is set to true and one of the demoModes is Seconds, Minutes, Hours12 or Hours24.
+
+Description: Use the UTCHoursOffset property to shift the timed setting of percentages by an UTC offset. Need the demoMode set to true.
+
+
+
+
+Name: autoStrokeWidthRect
+
+Type: property
+
+Syntax: set the autoStrokeWidthRect of <widget> to <pTrueOrFalse>
+get the autoStrokeWidthRect of <widget>
+
+Parameters: 
+
+pTrueOrFalse: is true or false
+
+Example:
+set the autoStrokeWidthRect of widget "hhProgress" to not \
+    the autoStrokeWidthRect of widget "hhProgress"
+
+Summary: If set to true property autoStrokeWidthRect is chosen to fill the rectangle's outline up to 1 pixel inset. This overrides "rounded"-settings, the rectangle becomes not rounded.
+
+Description: Use the autoStrokeWidthRect property for a default setting of the strokeWidthRect. If set to true this overrides "rounded"-settings, the rectangle becomes not rounded.
+
+
+
+

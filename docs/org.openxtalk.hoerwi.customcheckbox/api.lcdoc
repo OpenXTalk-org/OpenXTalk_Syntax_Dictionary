@@ -1,0 +1,56 @@
+Library: org.openxtalk.hoerwi.customcheckbox
+
+Type: widget
+
+Summary: Allows individual settings of a checkbox.
+
+Description:
+Allows individual settings of a checkbox.
+Checkbox as Square, Roundrect or Circle, Icon as Check or Cross
+the label can be displayed to the left or right of the checkbox.
+
+author: Andreas Strauch
+
+version: 1.0.0
+
+Name: checked
+
+Type: property
+
+Syntax: set the checked of <widget> to true|false
+
+Summary: set the Checkbox to activ / inactiv
+
+Name: flip
+
+Type: property
+
+Syntax: set the flip of <widget> to true|false
+
+Summary: Flips the Label to left or right of the checkbox
+
+Name: label
+
+Type: property
+
+Syntax: set the label of <widget> to <string>
+
+Summary: Set the Label of Checkbox
+
+Name: theme
+
+Type: property
+
+Syntax: set the theme of <widget> to square|round|circle
+
+Summary: the Theme of the corner can be changed
+
+Name: checkstyle
+
+Type: property
+
+Syntax: set the checkstyle of <widget> to check|cross
+
+Summary: the Icon of the checker can be changed
+
+

@@ -1,0 +1,74 @@
+Library: com.livecode.widget.piechart
+
+Type: widget
+
+Summary: A pie chart control. A pie chart displays a set of values and labels as sectors of a circular chart. The labels are displayed alongside the chart, and can be shown or hidden.
+
+Name: sectorClicked
+
+Type: message
+
+Syntax: on sectorClicked pSectorNumber
+
+Summary: Sent when a sector of the pie chart is clicked.
+
+Parameters: 
+
+pSectorNumber: The sector number of the clicked segment.
+
+Description: The <sectorClicked > message is sent when a sector in the pie chart is clicked. The <pSectorNumber> parameter number of the sector which was clicked.
+
+
+Name: sectorValues
+
+Type: property
+
+Syntax: get the sectorValues of <widget>
+
+Syntax: set the sectorValues of <widget> to <pValueList>
+
+Parameters: 
+
+pValueList: A comma separated string of values.
+
+Summary: The list of values to be displayed on the pie chart.
+
+Description: Use the <sectorValues> property to set the values to be displayed in the pie chart.
+
+
+
+
+Name: sectorLabels
+
+Type: property
+
+Syntax: get the sectorLabels of <widget>
+
+Syntax: set the sectorLabels of <widget> to <pLabelList>
+
+Parameters: 
+
+pLabelList: A comma separated string of labels.
+
+Summary: The list of labels associated with the pie chart sectors.
+
+Description: Use the <sectorLabels> property to set the labels to be displayed in the pie chart.
+
+
+
+
+Name: showLabels
+
+Type: property
+
+Syntax: get the showLabels of <widget>
+
+Syntax: set the showLabels of <widget> to { true | false }
+
+Summary: Whether the sector labels are shown or not.
+
+Description: Use the <showLabels> property to control whether the sector labels are shown or not.
+
+
+
+

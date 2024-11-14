@@ -1,0 +1,41 @@
+Library: org.openxtalk.widget.eightway
+
+Type: widget
+
+Summary: This widget is an eight-way on-screen controller, a virtual D-pad like the ones found on game controllers.
+
+author: Paul McClernan
+
+version: 0.1
+
+Name: DPadOn
+
+Type: message
+
+Syntax: DPadOn pNumber
+
+Summary: Sent when a virtual button is clicked.
+
+Example:
+on DPadOn pButtonNum
+	put "DPadOn " & pButtonNum
+end DPadOn
+
+Description: Handle the DPadOn message in the widget's object script to respond to clicks in the the virtual DPad.
+
+Name: DPadOff
+
+Type: message
+
+Syntax: DPadOff pNumber
+
+Summary: Sent when a virtual button is clicked.
+
+Example:
+on DPad pButtonNum
+	put "DPadOff " & pButtonNum
+end DPadOn
+
+Description: Handle the DPadOff message in the widget's object script to respond to release of the virtual DPad buttons
+
+

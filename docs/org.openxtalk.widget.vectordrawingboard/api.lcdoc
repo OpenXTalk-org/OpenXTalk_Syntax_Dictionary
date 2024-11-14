@@ -1,0 +1,86 @@
+Library: org.openxtalk.widget.vectordrawingboard
+
+Type: widget
+
+Summary: A widget that allows for basic vector path drawing
+
+author: Paul McClernan for OpenXtalk IDE
+
+version: 0.1
+
+Name: mouseUp
+
+Type: message
+
+Syntax: mouseUp
+
+Summary: Sent when the tile is clicked
+
+Name: mouseEnter
+
+Type: message
+
+Syntax: mouseEnter
+
+Summary: Sent when the mouse enters the tile
+
+Name: mouseLeave
+
+Type: messages
+
+Syntax: mouseLeave
+
+Summary: Sent when the mouse leaves the tile
+
+Name: foregroundColor
+
+Type: property
+
+Name: borderColor
+
+Type: property
+
+
+Name: lineSize
+
+Type: property
+
+Syntax: set the lineSize of <widget> to <pLineWidth>
+get the lineSize of <widget>
+
+Summary: Set or get the line thisckness for drawing strokes.
+
+Description: Use the <lineSize> property to set or get the line thisckness for drawing strokes.
+
+
+
+
+Name: backingFillColor
+
+Type: property
+
+Syntax: set the backingFillColor of <widget> to <pColor>
+get the backingFillColor of <widget>
+
+Summary: Determines the color of the bounding box of the widget.
+
+Description: Use the <backingFillColor> property to set the color of the bounding box of the widget.
+
+
+
+
+Name: opaque
+
+Type: property
+
+Syntax: set the opaque of <widget> to {true|false}
+get the opaque of <widget>
+
+Summary: `true` if the SVG path is filled; `false` otherwise
+
+Description:
+Use the `opaque` property to test or control whether the SVG path is
+displayed as filled or not.
+
+
+

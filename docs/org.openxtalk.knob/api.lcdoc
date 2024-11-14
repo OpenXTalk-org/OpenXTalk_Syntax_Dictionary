@@ -1,0 +1,49 @@
+Library: org.openxtalk.knob
+
+Type: widget
+
+Description:
+This widget will rotate a path around a point of origin. You can choose from one of the included Font Awesome paths
+(circle notch, cog, pulse, spinner, or refresh) by setting the <iconStyle> property. Or you can assign your own path to the iconSVGPath property.
+You specify the size of the path by setting the <iconSize> property. The path will always be centered in the middle of the widget.
+
+You can change the amount of rotation that occurs as well as the frequency of animation by setting the
+<rotateBy> and 'frequency' properties.
+
+author: Paul McClernan (with code from Trevor DeVore)
+
+version: 1.0.0
+
+Name: knobTurned
+
+Type: message
+
+Name: mouseMove
+
+Type: message
+
+Name: mouseDown
+
+Type: message
+
+Name: mouseUp
+
+Type: message
+
+Name: mouseRelease
+
+Type: message
+
+Name: backgroundColor
+
+Type: property
+
+Name: hiliteColor
+
+Type: property
+
+Name: outerShadowColor
+
+Type: property
+
+

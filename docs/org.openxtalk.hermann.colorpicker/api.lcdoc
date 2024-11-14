@@ -1,0 +1,73 @@
+Library: org.openxtalk.hermann.colorpicker
+
+Type: widget
+
+Summary:
+Color picker v1.0.1 [-hh fecit, Oct 2018]
+This widget displays a modeless color dialog for selecting a RGBA color.
+These are four 0-255 integer items R,G,B,A where A may be used in LCS as blendLevel.
+You may use the widget as popup (using "it") or as 'ordinary' widget (using "colorChosen")
+See the "typical scripts" of the widget in contents section of the property inspector.
+Click  _and hold down_  the mouse while moving for picking a color of any screen pixel.
+If not popped up grab the widget by its border.
+
+version: 1.0.2
+
+author: Hermann Hoch
+
+
+Name: typicalScript
+
+Type: property
+
+Syntax: get the typicalScript of <widget>
+
+Parameters: 
+
+Example: set the script of graphic 1 to the typicalScript of widget "hhColorPicker".
+
+Description:
+Make a rectangle graphic of size 16x16 with the typical script.
+This may serve as color swatch option (use the backcolor and the blendlevel of the graphic for other objects).
+
+
+
+Name: widgetColor
+
+Type: property
+
+Syntax: set the widgetColor of <widget> to <pColor>
+get the widgetColor of <widget>
+
+Parameters: 
+
+pColor:
+is a RGBA color = 4 integers in range 0-255. When setting the widgetColor at least 3 items (R,G,B) are needed, item 4 may be omitted.
+Getting the widgetColor always returns the 4 values R,G,B,A.
+
+Example: set the widgetColor of widget "hhColorPicker" to the effective backColor of this card
+
+Summary: Sets or gets the RGBA color of the widget.
+
+
+
+
+Name: useMouseColor
+
+Type: property
+
+Syntax: set the useMouseColor of <widget> to <pTrueOrFalse>
+get the useMouseColor of <widget>
+
+Parameters: pTrueOrFalse is true or false. default is true.
+
+Example:
+set the useMouseColor of widget "hhColorPicker" to not \
+        the useMouseColor of widget "hhColorPicker"
+
+Summary:
+Sets or gets the mode for getting a screenPixel. If true then the LCS-mouseColor is used, if false the imageData of a snapshot is used. The colors are up to 1/32 "off" and are moreover are only valid if the pixel's transparency is zero.
+For picking up the color of any screen pixel click the "pipette" and hold down the mouse while moving.
+
+
+

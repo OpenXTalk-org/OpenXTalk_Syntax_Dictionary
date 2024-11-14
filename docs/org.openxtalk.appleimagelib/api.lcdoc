@@ -1,0 +1,26 @@
+Library: 
+
+Type: 
+
+author: Paul McClernan
+
+version: 0.0.2
+
+
+Name: getIconForFile
+
+Type: handler
+
+Syntax: getIconForFile(<pFilePath>)
+
+Summary: Gets the icon associated with the file / folder passed in.
+
+Parameters: 
+
+pFilePath: Path to the file or folder to get the associated icon image for.
+
+Returns: Boolean
+
+
+
+
