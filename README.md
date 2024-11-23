@@ -1,6 +1,6 @@
 # OpenXTalk Syntax Dictionary
 
-This site is for hosting of the Dictionary of OpenXTalk (aka OXT) found here:
+This site is for hosting of the Dictionary of OpenXTalk (aka OXT) that can be accessed from the following URL:
 
 https://openxtalk-org.github.io/OpenXTalk_Syntax_Dictionary/
 
