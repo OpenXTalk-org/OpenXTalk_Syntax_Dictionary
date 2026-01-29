@@ -73,7 +73,7 @@
 			}
 			else
 			{
-				var tExtImageFolder = '<img src=images/' + image_file '" />';
+				var tExtImageFolder = '<img src="images/' + image_file '" />';
 				return tExtImageFolder;
 			}
 		},
