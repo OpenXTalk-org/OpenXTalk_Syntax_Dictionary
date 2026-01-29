@@ -73,9 +73,10 @@
 			}
 			else
 			{
-				var tExtImageFolder = '<img src="';
-				tExtImageFolder += tUserGuideData.guides[pGuideIndex].location;
-				tExtImageFolder += 'images/' + image_file + '" />';
+				var tExtImageFolder = '<img src=images/' + image_file '" />';
+				//* tExtImageFolder += tUserGuideData.guides[pGuideIndex].location;
+		   	//* 	tExtImageFolder += 'images/' + image_file + '" />';
+				*//
 				return tExtImageFolder;
 			}
 		},
